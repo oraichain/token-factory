@@ -1,26 +1,25 @@
 module github.com/CosmWasm/token-factory
 
-go 1.18
+go 1.22.5
 
 require (
 	github.com/CosmWasm/wasmd v0.30.0
-	github.com/cosmos/cosmos-proto v1.0.0-beta.1
-	github.com/cosmos/cosmos-sdk v0.45.12
-	github.com/cosmos/gogoproto v1.4.3
-	github.com/cosmos/ibc-go/v4 v4.3.0
-	github.com/cosmos/interchain-accounts v0.2.5
-	github.com/gogo/protobuf v1.3.3
-	github.com/golang/protobuf v1.5.2
-	github.com/gorilla/mux v1.8.0
+	cosmossdk.io/core v0.12.0
+	cosmossdk.io/errors v1.0.1
+	cosmossdk.io/log v1.3.1
+	cosmossdk.io/store v1.1.0
+	github.com/cosmos/cosmos-proto v1.0.0-beta.5
+	github.com/cosmos/cosmos-sdk v0.50.8
+	github.com/cosmos/gogoproto v1.5.0
+	github.com/golang/protobuf v1.5.4
+	github.com/cometbft/cometbft v0.38.10
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
-	github.com/rakyll/statik v0.1.7
-	github.com/spf13/cast v1.5.0
-	github.com/spf13/cobra v1.6.0
-	github.com/stretchr/testify v1.8.1
-	github.com/tendermint/tendermint v0.34.25
-	github.com/tendermint/tm-db v0.6.8-0.20220506192307-f628bb5dc95b
-	google.golang.org/genproto v0.0.0-20221024183307-1bc688fe9f3e
-	google.golang.org/grpc v1.50.1
+	github.com/osmosis-labs/osmosis/osmomath v0.0.12-0.20240517165907-1625703bc16d
+	github.com/osmosis-labs/osmosis/osmoutils v0.0.12-0.20240730081143-f66038c6d4bb
+	github.com/spf13/cobra v1.8.1
+	github.com/stretchr/testify v1.9.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20240624140628-dc46fd24d27d
+	google.golang.org/grpc v1.65.0
 )
 
 require (
@@ -35,6 +34,7 @@ require (
 	github.com/keybase/go-keychain v0.0.0-20190712205309-48d3d31d256d // indirect
 	github.com/onsi/gomega v1.20.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/cometbft/cometbft-db v0.11.0 // indirect
 	github.com/regen-network/cosmos-proto v0.3.1 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
@@ -123,7 +123,6 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/syndtr/goleveldb v1.0.1-0.20210819022825-2ae1ddf74ef7 // indirect
-	github.com/tendermint/go-amino v0.16.0 // indirect
 	github.com/zondax/hid v0.9.1 // indirect
 	go.etcd.io/bbolt v1.3.6 // indirect
 	go.opencensus.io v0.23.0 // indirect
@@ -139,15 +138,17 @@ require (
 )
 
 replace (
+	github.com/cosmos/cosmos-sdk => github.com/oraichain/cosmos-sdk v0.50.5-0.20240729032658-16fb0ec0a540
+	// use wasm forked from Oraichain
+	github.com/CosmWasm/wasmd => github.com/oraichain/wasmd v0.31.1-0.20240730073347-854799748c6e
 	// Use the cosmos-flavored keyring library
-	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
+	github.com/99designs/keyring => github.com/cosmos/keyring v1.2.0
 	// Fix upstream GHSA-h395-qcrw-5vmq vulnerability.
 	// TODO Remove it: https://github.com/cosmos/cosmos-sdk/issues/10409
-	github.com/gin-gonic/gin => github.com/gin-gonic/gin v1.7.0
+	github.com/gin-gonic/gin => github.com/gin-gonic/gin v1.8.1
 	// use cosmos-compatible protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
-	// informal tendermint
-	github.com/tendermint/tendermint => github.com/informalsystems/tendermint v0.34.25
-	// use grpc compatible with cosmos protobufs
-	google.golang.org/grpc => google.golang.org/grpc v1.33.2
+	// informal cometbft
+	github.com/cometbft/cometbft => github.com/oraichain/cometbft v0.38.6-0.20240729034548-028d4fcc0fa4
+
 )
